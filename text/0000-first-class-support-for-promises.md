@@ -271,7 +271,7 @@ If JavaScript were to ever adopt a standard API for synchronously inspecting the
 
 Tracking the result on the promise object only works if the promise object did not change between renders. If it's a brand new promise, then the previous strategies won't work. However, in many cases, even a brand new promise will already have resolved data. This happens often because most promise-based APIs return a fresh promise instance on every call regardless of whether the response was cached. That's also how async functions work in JavaScript — every call to an async function results in a brand new promise, even if the data was cached, and even if nothing was awaited at all.
 
-The most important case where this happens is when an component re-renders in response to an unrelated update.
+The most important case where this happens is when a component re-renders in response to an unrelated update.
 
 Consider this example:
 
@@ -424,7 +424,7 @@ const latestValue = use(observable);
 
 Two reasons:
 
-- Promises are not the only ["usable" type](#other-usable-types) — for example, you'll also be able to be `use(Context)`.
+- Promises are not the only ["usable" type](#other-usable-types) — for example, you'll also be able to `use(Context)`.
 - `use` is a very special Hook because [it's allowed be called conditionally](#conditionally-suspending-on-data). The idea is to mitigate confusion by making it the _only_ conditional Hook. Instead of remembering a handful of different conditional Hooks, developers will only have to remember one.
 
 ## Why can't `use` be called in regular, non-React functions?
